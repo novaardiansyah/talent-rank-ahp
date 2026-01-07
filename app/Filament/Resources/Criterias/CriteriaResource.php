@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Criterias;
 
 use BackedEnum;
+use UnitEnum;
 use App\Filament\Resources\Criterias\Pages\ManageCriterias;
 use App\Filament\Resources\Criterias\Pages\CreateCriteria;
 use App\Filament\Resources\Criterias\Pages\EditCriteria;
@@ -31,19 +32,18 @@ use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use UnitEnum;
 
 class CriteriaResource extends Resource
 {
   protected static ?string $model = Criteria::class;
 
-  protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedAdjustmentsHorizontal;
+  protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedNumberedList;
 
   protected static string|UnitEnum|null $navigationGroup = 'Kriteria';
 
   protected static ?int $navigationSort = 10;
   
-  protected static ?string $recordTitleAttribute = 'name';
+  protected static ?string $recordTitleAttribute = 'description';
 
   protected static ?string $pluralModelLabel = 'Kriteria';
 

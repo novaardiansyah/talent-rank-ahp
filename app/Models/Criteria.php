@@ -16,5 +16,8 @@ class Criteria extends Model
 
   protected $fillable = ['name', 'description'];
 
-
+  public function comparisons()
+  {
+    return $this->hasMany(CriterionComparison::class, 'criterion_id_1');
+  }
 }
