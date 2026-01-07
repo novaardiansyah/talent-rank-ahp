@@ -4,8 +4,8 @@ namespace App\Filament\Resources\Criterias;
 
 use BackedEnum;
 use App\Filament\Resources\Criterias\Pages\ManageCriterias;
-use App\Filament\Resources\Payments\Pages\CreateCriteria;
-use App\Filament\Resources\Payments\Pages\EditCriteria;
+use App\Filament\Resources\Criterias\Pages\CreateCriteria;
+use App\Filament\Resources\Criterias\Pages\EditCriteria;
 use App\Models\Criteria;
 use Filament\Actions\ActionGroup;
 use Filament\Actions\BulkActionGroup;
