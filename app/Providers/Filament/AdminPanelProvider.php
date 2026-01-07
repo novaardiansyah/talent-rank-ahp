@@ -20,6 +20,7 @@ use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Filament\Auth\MultiFactor\App\AppAuthentication;
 use Filament\Auth\MultiFactor\Email\EmailAuthentication;
+use Filament\Support\Enums\Width;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -29,23 +30,34 @@ class AdminPanelProvider extends PanelProvider
       ->default()
       ->id('admin')
       ->path('admin')
+      ->brandName(config('app.name'))
+      ->spa()
       ->login()
       ->registration(false)
       ->profile()
       ->passwordReset()
       ->multiFactorAuthentication([
-        AppAuthentication::make(),
+        AppAuthentication::make()
+          ->recoverable()
+          ->recoveryCodeCount(8)
+          ->regenerableRecoveryCodes(false)
+          ->brandName(config('app.name')),
         EmailAuthentication::make()
           ->codeExpiryMinutes(10),
-      ])
+      ], isRequired: true)
       ->colors([
         'primary' => Color::Emerald,
       ])
+      ->unsavedChangesAlerts()
       ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
       ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
       ->pages([
         Dashboard::class,
       ])
+      ->favicon(asset('favicon.png'))
+      ->sidebarCollapsibleOnDesktop()
+      ->maxContentWidth(Width::Full)
+      ->topbar(false)
       ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
       ->widgets([
         AccountWidget::class,
