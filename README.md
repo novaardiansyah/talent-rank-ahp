@@ -17,7 +17,7 @@ This system is divided into two primary roles:
 - [Tailwind CSS](https://tailwindcss.com/) - CSS Framework
 
 ## Demo Version
-You can explore the system on our demo site: [https://talent-rank-ahp.novaardiansyah.id/admin](https://talent-rank-ahp.novaardiansyah.id/admin)
+You can explore the system on our demo site: [https://talent-rank-ahp.novaardiansyah.id](https://talent-rank-ahp.novaardiansyah.id)
 
 **Credentials:**
 - **Account:** Coming Soon
@@ -57,4 +57,5 @@ Feel free to use, modify, and share it with the world. Just remember to keep the
 ---
 
 **Happy coding and collaborating!**
+
 — Nova Ardiansyah
