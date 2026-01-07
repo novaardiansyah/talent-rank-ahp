@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\Payments\Pages;
+namespace App\Filament\Resources\Criterias\Pages;
 
 use App\Filament\Resources\Criterias\CriteriaResource;
 use Filament\Resources\Pages\CreateRecord;
