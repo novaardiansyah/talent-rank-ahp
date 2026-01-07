@@ -11,14 +11,15 @@ use Filament\Auth\MultiFactor\App\Contracts\HasAppAuthenticationRecovery;
 use Filament\Auth\MultiFactor\Email\Contracts\HasEmailAuthentication;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
+use Filament\Models\Contracts\HasAvatar;
 
-class User extends Authenticatable implements FilamentUser, HasAppAuthentication, HasAppAuthenticationRecovery, HasEmailAuthentication, MustVerifyEmail
+class User extends Authenticatable implements FilamentUser, HasAppAuthentication, HasAppAuthenticationRecovery, HasEmailAuthentication, MustVerifyEmail, HasAvatar
 {
   use HasFactory, Notifiable;
 
   protected $table = 'users';
 
-  protected $fillable = ['name', 'email', 'password', 'app_authentication_secret', 'app_authentication_recovery_codes'];
+  protected $fillable = ['name', 'email', 'password', 'app_authentication_secret', 'app_authentication_recovery_codes', 'avatar_url'];
 
   protected $hidden = [
     'password',
@@ -82,5 +83,10 @@ class User extends Authenticatable implements FilamentUser, HasAppAuthentication
   {
     $this->has_email_authentication = $condition;
     $this->save();
+  }
+
+  public function getFilamentAvatarUrl(): ?string
+  {
+    return $this->avatar_url;
   }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\AvatarProviders\AvatarPlaceHolder;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -11,7 +12,6 @@ use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
 use Filament\Widgets\AccountWidget;
-use Filament\Widgets\FilamentInfoWidget;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
@@ -44,13 +44,14 @@ class AdminPanelProvider extends PanelProvider
           ->brandName(config('app.name')),
         EmailAuthentication::make()
           ->codeExpiryMinutes(10),
-      ], isRequired: true)
+      ], isRequired: false)
       ->colors([
         'primary' => Color::Emerald,
       ])
       ->unsavedChangesAlerts()
       ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
       ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
+      ->defaultAvatarProvider(AvatarPlaceHolder::class)
       ->pages([
         Dashboard::class,
       ])
@@ -61,7 +62,6 @@ class AdminPanelProvider extends PanelProvider
       ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
       ->widgets([
         AccountWidget::class,
-        FilamentInfoWidget::class,
       ])
       ->middleware([
         EncryptCookies::class,
