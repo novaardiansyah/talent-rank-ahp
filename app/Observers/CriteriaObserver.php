@@ -3,9 +3,26 @@
 namespace App\Observers;
 
 use App\Models\Criteria;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
+use Illuminate\Validation\ValidationException;
 
 class CriteriaObserver
 {
+  public function saving(Criteria $criteria): void
+  {
+    $criteria->name = sprintf('C%02d', $criteria->name);
+
+    $validator = Validator::make($criteria->getAttributes(), [
+      'name' => ['required', Rule::unique('criterias', 'name')->ignore($criteria->id)],
+    ], [], ['name' => 'kode kriteria']);
+
+    if ($validator->fails()) {
+      $errors = $validator->errors()->toArray();
+      throw ValidationException::withMessages(normalizeValidationErrors($errors, 'data.'));
+    }
+  }
+
   /**
    * Handle the User "created" event.
    */
@@ -49,10 +66,10 @@ class CriteriaObserver
   private function _log(string $event, Criteria $criteria): void
   {
     saveActivityLog([
-      'event'        => $event,
-      'model'        => 'Criteria',
+      'event' => $event,
+      'model' => 'Criteria',
       'subject_type' => Criteria::class,
-      'subject_id'   => $criteria->id,
+      'subject_id' => $criteria->id,
     ], $criteria);
   }
 }

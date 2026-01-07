@@ -147,14 +147,18 @@ function copyFileWithRandomName(string $defaultPath): string
   return $defaultPath;
 }
 
-function normalizeValidationErrors(array $errors): array
+function normalizeValidationErrors(array $errors, $addPrefix = null, $removePrefix = null): array
 {
   $normalizedErrors = [];
 
   foreach ($errors as $key => $messages) {
-    $newKey = str_starts_with($key, 'data.')
-      ? substr($key, 5)
-      : $key;
+    if ($addPrefix) {
+      $newKey = $addPrefix . $key;
+    }
+
+    if ($removePrefix && str_starts_with($key, $removePrefix)) {
+      $newKey = substr($key, strlen($removePrefix));
+    }
 
     $normalizedErrors[$newKey] = $messages;
   }

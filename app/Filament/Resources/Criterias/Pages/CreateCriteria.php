@@ -1,0 +1,17 @@
+<?php
+
+namespace App\Filament\Resources\Payments\Pages;
+
+use App\Filament\Resources\Criterias\CriteriaResource;
+use Filament\Resources\Pages\CreateRecord;
+
+class CreateCriteria extends CreateRecord
+{
+  protected static string $resource = CriteriaResource::class;
+
+  protected function getRedirectUrl(): string
+  {
+    $resource = static::getResource();
+    return $resource::getUrl('index');
+  }
+}
