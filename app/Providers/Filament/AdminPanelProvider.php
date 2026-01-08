@@ -24,8 +24,8 @@ use Filament\Auth\MultiFactor\App\AppAuthentication;
 use Filament\Auth\MultiFactor\Email\EmailAuthentication;
 use Filament\Support\Enums\Width;
 use Illuminate\Support\Facades\Auth;
-use Filament\Notifications\Notification;
-use PDO;
+use Filament\View\PanelsRenderHook;
+use Illuminate\Support\HtmlString;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -94,6 +94,15 @@ class AdminPanelProvider extends PanelProvider
       ])
       ->authMiddleware([
         Authenticate::class,
-      ]);
+      ])
+      ->renderHook(
+        PanelsRenderHook::HEAD_END,
+        fn(): HtmlString => new HtmlString('
+          <style>
+            *::-webkit-scrollbar { display: none; }
+            * { -ms-overflow-style: none; scrollbar-width: none; }
+          </style>
+        ')
+      );;
   }
 }
