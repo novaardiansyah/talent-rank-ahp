@@ -4,6 +4,7 @@ namespace App\Providers\Filament;
 
 use App\Filament\AvatarProviders\AvatarPlaceHolder;
 use App\Filament\Pages\Profile;
+use Filament\Actions\Action;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -22,6 +23,9 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Filament\Auth\MultiFactor\App\AppAuthentication;
 use Filament\Auth\MultiFactor\Email\EmailAuthentication;
 use Filament\Support\Enums\Width;
+use Illuminate\Support\Facades\Auth;
+use Filament\Notifications\Notification;
+use PDO;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -36,6 +40,13 @@ class AdminPanelProvider extends PanelProvider
       ->login()
       ->registration(false)
       ->profile(Profile::class)
+      ->userMenuItems([
+        'profile' => function (Action $action) {
+          $action->visible(function () {
+            return Auth::user()->id === 1;
+          });
+        },
+      ])
       ->passwordReset()
       ->multiFactorAuthentication([
         AppAuthentication::make()
