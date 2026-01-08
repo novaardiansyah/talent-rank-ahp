@@ -23,7 +23,7 @@ class MatrixComparison extends Page implements HasTable, HasForms
 
   protected static string $resource = CriterionComparisonResource::class;
 
-  protected static ?string $title = 'Bobot Kriteria';
+  protected static ?string $title = 'Nilai Bobot Kriteria';
 
   protected string $view = 'filament.resources.criterion-comparisons.pages.matrix-comparison';
 
@@ -111,7 +111,7 @@ class MatrixComparison extends Page implements HasTable, HasForms
     );
 
     Notification::make()
-      ->title('Nilai perbandingan berhasil diubah!')
+      ->title('Nilai bobot kriteria berhasil diubah!')
       ->success()
       ->send();
 
