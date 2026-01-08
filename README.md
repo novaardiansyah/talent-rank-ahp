@@ -41,9 +41,9 @@ Need to chat? Feel free to drop me a line via [Email](mailto:novaardiansyah78@gm
 ![Laravel](https://img.shields.io/badge/Laravel-12-blue)
 ![PHP](https://img.shields.io/badge/PHP-8.3-blue)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-latest-blue)
-![size](https://img.shields.io/github/repo-size/novaardiansyah-org/talent-rank-ahp?label=size&color=informational)
+![size](https://img.shields.io/github/repo-size/novaardiansyah/talent-rank-ahp?label=size&color=informational)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![last commit](https://img.shields.io/github/last-commit/novaardiansyah-org/talent-rank-ahp?label=last%20commit&color=informational)](commits/main)
+[![last commit](https://img.shields.io/github/last-commit/novaardiansyah/talent-rank-ahp?label=last%20commit&color=informational)](commits/main)
 
 ## Code of Conduct
 
