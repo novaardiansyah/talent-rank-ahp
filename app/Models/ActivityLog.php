@@ -33,6 +33,7 @@ class ActivityLog extends Model
   {
     $colors = [
       'Updated' => 'info',
+      'Created Bulk' => 'warning',
       'Created' => 'success',
       'Deleted' => 'danger',
       'Force Deleted' => 'danger',

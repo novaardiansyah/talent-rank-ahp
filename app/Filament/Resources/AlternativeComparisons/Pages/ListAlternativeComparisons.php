@@ -3,13 +3,11 @@
 namespace App\Filament\Resources\AlternativeComparisons\Pages;
 
 use App\Filament\Resources\AlternativeComparisons\AlternativeComparisonResource;
-use App\Models\Alternative;
-use App\Models\AlternativeComparison;
-use App\Models\Criteria;
-use Carbon\Carbon;
+use App\Jobs\AlternativeComparisonResource\ResetDataJob;
 use Filament\Actions\Action;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ListRecords;
+use Illuminate\Support\Facades\Auth;
 
 class ListAlternativeComparisons extends ListRecords
 {
@@ -25,37 +23,14 @@ class ListAlternativeComparisons extends ListRecords
         ->requiresConfirmation()
         ->modalHeading('Reset bobot alternatif')
         ->action(function (Action $action) {
-          AlternativeComparison::truncate();
-
-          $criterias = Criteria::all();
-          $alternatives = Alternative::all();
-
-          $temp = [];
-          $now = Carbon::now();
-
-          foreach ($criterias as $criteria) {
-            foreach ($alternatives as $alternative) {
-              foreach ($alternatives as $alternative2) {
-                $temp[] = [
-                  'criterion_id'     => $criteria->id,
-                  'alternative_id_1' => $alternative->id,
-                  'alternative_id_2' => $alternative2->id,
-                  'value'            => 1,
-                  'created_at'       => $now,
-                  'updated_at'       => $now,
-                ];
-              }
-            }
-          }
-
-          AlternativeComparison::insert($temp);
+          ResetDataJob::dispatch(Auth::user());
 
           $action->success();
           $action->successNotification(
             Notification::make()
               ->success()
-              ->title('Berhasil reset bobot alternatif')
-              ->body('Seluruh bobot alternatif berhasil direset kembali ke default')
+              ->title('Reset bobot alternatif sedang diproses')
+              ->body('Anda akan menerima notifikasi setelah proses reset selesai')
           );
         })
     ];

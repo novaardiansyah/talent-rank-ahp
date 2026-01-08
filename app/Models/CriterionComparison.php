@@ -2,9 +2,12 @@
 
 namespace App\Models;
 
+use App\Observers\CriterionComparisonObserver;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+#[ObservedBy(CriterionComparisonObserver::class)]
 class CriterionComparison extends Model
 {
   use SoftDeletes;

@@ -47,6 +47,7 @@ class AdminPanelProvider extends PanelProvider
           });
         },
       ])
+      ->databaseNotifications()
       ->passwordReset()
       ->multiFactorAuthentication([
         AppAuthentication::make()
