@@ -20,7 +20,8 @@ This system is divided into two primary roles:
 You can explore the system on our demo site: [https://talent-rank-ahp.novaardiansyah.id](https://talent-rank-ahp.novaardiansyah.id)
 
 **Credentials:**
-- **Account:** Coming Soon
+- Email: `demo@novaardiansyah.id`
+- Password: `3iDKLKqizxCewC2C`
 
 > Note: Some features may be limited in the demo version. If you encounter any bugs or issues, please feel free to open an issue.
 

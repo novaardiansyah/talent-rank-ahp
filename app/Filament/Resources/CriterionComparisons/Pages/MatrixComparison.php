@@ -36,7 +36,9 @@ class MatrixComparison extends Page implements HasTable, HasForms
 
   public function form(Schema $schema): Schema
   {
-    $criteriaOptions = Criteria::all()->pluck('name', 'id')->toArray();
+    $criteriaOptions = Criteria::all()->mapWithKeys(function ($criteria) {
+      return [$criteria->id => $criteria->name . ' - ' . $criteria->description];
+    })->toArray();
 
     $comparisonOptions = [
       '1' => '1 - Sama penting',
