@@ -7,6 +7,7 @@ use UnitEnum;
 use App\Filament\Resources\AlternativeComparisons\Pages\CreateAlternativeComparison;
 use App\Filament\Resources\AlternativeComparisons\Pages\EditAlternativeComparison;
 use App\Filament\Resources\AlternativeComparisons\Pages\ListAlternativeComparisons;
+use App\Filament\Resources\AlternativeComparisons\Pages\MatrixComparison;
 use App\Filament\Resources\AlternativeComparisons\Pages\ViewAlternativeComparison;
 use App\Filament\Resources\AlternativeComparisons\Schemas\AlternativeComparisonForm;
 use App\Filament\Resources\AlternativeComparisons\Schemas\AlternativeComparisonInfolist;
@@ -60,7 +61,7 @@ class AlternativeComparisonResource extends Resource
   public static function getPages(): array
   {
     return [
-      'index' => ListAlternativeComparisons::route('/'),
+      'index' => MatrixComparison::route('/matrix-comparison'),
       'create' => CreateAlternativeComparison::route('/create'),
       'view' => ViewAlternativeComparison::route('/{record}'),
       'edit' => EditAlternativeComparison::route('/{record}/edit'),
