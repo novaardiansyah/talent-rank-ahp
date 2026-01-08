@@ -12,7 +12,13 @@ return new class extends Migration {
   {
     Schema::create('alternative_comparisons', function (Blueprint $table) {
       $table->id();
+      $table->foreignId('criterion_id')->constrained('criterias')->cascadeOnDelete();
+      $table->foreignId('alternative_id_1')->constrained('alternatives')->cascadeOnDelete();
+      $table->foreignId('alternative_id_2')->constrained('alternatives')->cascadeOnDelete();
+      $table->decimal('value', 8, 4);
+      $table->softDeletes();
       $table->timestamps();
+      $table->unique(['criterion_id', 'alternative_id_1', 'alternative_id_2'], 'unique_alternative_comparisons');
     });
   }
 
