@@ -3,6 +3,7 @@
 namespace App\Providers\Filament;
 
 use App\Filament\AvatarProviders\AvatarPlaceHolder;
+use App\Filament\Pages\Profile;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -34,7 +35,7 @@ class AdminPanelProvider extends PanelProvider
       ->spa()
       ->login()
       ->registration(false)
-      ->profile()
+      ->profile(Profile::class)
       ->passwordReset()
       ->multiFactorAuthentication([
         AppAuthentication::make()
