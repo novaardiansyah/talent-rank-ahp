@@ -1,6 +1,6 @@
 <x-filament-panels::page>
   <x-filament::section collapsible heading="Mengukur Konsistensi Kriteria">
-    <x-filament::section collapsible heading="Matriks Perbandingan Kriteria">
+    <x-filament::section collapsible heading="Matriks Perbandingan Kriteria" style="margin-bottom: 2rem;">
       <div>
         <p class="text-sm text-gray-600 dark:text-gray-400" style="margin-bottom: 1rem;">
           Pertama-tama menyusun hirarki dimana diawali dengan tujuan, kriteria dan alternatif yang akan dinilai.
@@ -10,7 +10,20 @@
           Data matrik tersebut seperti terlihat pada tabel berikut.
         </p>
 
-        {{ $this->table }}
+        <livewire:final-ranking.comparison-matrix-table />
+      </div>
+    </x-filament::section>
+
+    <x-filament::section collapsible heading="Matriks Bobot Prioritas Kriteria">
+      <div>
+        <p class="text-sm text-gray-600 dark:text-gray-400" style="margin-bottom: 1rem;">
+          Setelah terbentuk matrik perbandingan maka dilihat bobot prioritas untuk perbandingan kriteria.
+          Dengan cara membagi isi matriks perbandingan dengan jumlah kolom yang bersesuaian,
+          kemudian menjumlahkan perbaris setelah itu hasil penjumlahan dibagi dengan banyaknya kriteria
+          sehingga ditemukan bobot prioritas seperti terlihat pada tabel berikut.
+        </p>
+
+        <livewire:final-ranking.priority-matrix-table />
       </div>
     </x-filament::section>
   </x-filament::section>
