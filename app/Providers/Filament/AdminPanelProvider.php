@@ -69,7 +69,6 @@ class AdminPanelProvider extends PanelProvider
         'Alternatif',
         'Logs',
       ])
-      ->defaultAvatarProvider(AvatarPlaceHolder::class)
       ->pages([
         Dashboard::class,
       ])

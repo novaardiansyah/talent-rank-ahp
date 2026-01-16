@@ -6,6 +6,13 @@ use App\Models\User;
 
 class UserObserver
 {
+  public function creating(User $user)
+  {
+    if (!$user->avatar_url) {
+      $user->avatar_url = 'https://testingbot.com/free-online-tools/random-avatar/300?u=' . $user->id;
+    }
+  }
+
   /**
    * Handle the User "created" event.
    */
