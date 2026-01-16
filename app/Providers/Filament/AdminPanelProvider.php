@@ -67,6 +67,7 @@ class AdminPanelProvider extends PanelProvider
       ->navigationGroups([
         'Kriteria',
         'Alternatif',
+        'Perhitungan Final',
         'Logs',
       ])
       ->pages([
