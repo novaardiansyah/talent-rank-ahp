@@ -30,4 +30,26 @@
       </div>
     </x-filament::section>
   </x-filament::section>
+
+  <x-filament::section collapsible heading="Matriks Perbandingan Alternatif">
+    <div>
+      <p class="text-sm text-gray-600 dark:text-gray-400" style="margin-bottom: 1rem;">
+        Selanjutnya setelah menemukan bobot prioritas kriteria, menetapkan nilai skala perbandingan alternatif berdasarkan masing-masing kriteria. Nilai skala sesuai dengan kebijakan perusahaan. Langkah selanjutnya membuat matriks perbandingan alternatif berdasarkan kriteria. Setelah terbentuk matriks perbandingan alternatif berdasarkan kriteria maka dicari bobot prioritas untuk perbandingan alternatif terhadap masing,masing kriteria. Buat kriteria selanjutnya dengan cara yang sama.
+      </p>
+
+      @php
+        $criterias = \App\Models\Criteria::orderBy('id')->get();
+      @endphp
+
+      @foreach ($criterias as $index => $criteria)
+        <div style="{{ $index > 0 ? 'margin-top: 2rem;' : '' }}">
+          <livewire:final-ranking.alternative-comparison-table :criteriaId="$criteria->id" :key="'alt-comp-' . $criteria->id" />
+          <div style="margin-top: 1.5rem;">
+            <livewire:final-ranking.alternative-priority-table :criteriaId="$criteria->id" :key="'alt-prio-' . $criteria->id" />
+          </div>
+        </div>
+        <hr style="margin-top: 1rem;">
+      @endforeach
+    </div>
+  </x-filament::section>
 </x-filament-panels::page>
