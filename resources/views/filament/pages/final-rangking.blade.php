@@ -1,5 +1,5 @@
 <x-filament-panels::page>
-  <x-filament::section collapsible heading="Mengukur Konsistensi Kriteria">
+  <x-filament::section collapsible collapsed heading="Mengukur Konsistensi Kriteria">
     <x-filament::section collapsible heading="Matriks Perbandingan Kriteria" style="margin-bottom: 2rem;">
       <div>
         <p class="text-gray-600 dark:text-gray-400" style="margin-bottom: 1rem; font-size: .90rem;">
@@ -31,7 +31,7 @@
     </x-filament::section>
   </x-filament::section>
 
-  <x-filament::section collapsible heading="Matriks Perbandingan Alternatif">
+  <x-filament::section collapsible collapsed heading="Matriks Perbandingan Alternatif">
     <div>
       <p class="text-gray-600 dark:text-gray-400" style="margin-bottom: 1rem; font-size: .90rem;">
         Setelah bobot kriteria diperoleh, tahap selanjutnya adalah mengevaluasi setiap alternatif kandidat berdasarkan masing-masing kriteria menggunakan skala penilaian yang telah ditetapkan. Matriks perbandingan alternatif dibentuk untuk setiap kriteria, kemudian dihitung bobot prioritas alternatif terhadap kriteria tersebut dengan metode yang sama seperti sebelumnya.
