@@ -11,15 +11,27 @@ use Filament\Resources\Pages\EditRecord;
 
 class EditAlternative extends EditRecord
 {
-    protected static string $resource = AlternativeResource::class;
+  protected static string $resource = AlternativeResource::class;
 
-    protected function getHeaderActions(): array
-    {
-        return [
-            ViewAction::make(),
-            DeleteAction::make(),
-            ForceDeleteAction::make(),
-            RestoreAction::make(),
-        ];
-    }
+  protected function mutateFormDataBeforeFill(array $data): array
+  {
+    $data['name'] = (int) preg_replace('/[^0-9]/', '', $data['name']);
+    return $data;
+  }
+
+  protected function getHeaderActions(): array
+  {
+    return [
+      ViewAction::make(),
+      DeleteAction::make(),
+      ForceDeleteAction::make(),
+      RestoreAction::make(),
+    ];
+  }
+
+  protected function getRedirectUrl(): string
+  {
+    $resource = static::getResource();
+    return $resource::getUrl('index');
+  }
 }
