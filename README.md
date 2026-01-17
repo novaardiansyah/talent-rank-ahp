@@ -25,6 +25,12 @@ You can explore the system on our demo site: [https://talent-rank-ahp.novaardian
 
 > Note: Some features may be limited in the demo version. If you encounter any bugs or issues, please feel free to open an issue.
 
+## Project Previews
+
+<img src="public/images/markdown/image-1.png" width="500" alt="Dashboard">
+<img src="public/images/markdown/image-2.png" width="500" alt="Kriteria">
+<img src="public/images/markdown/image-3.png" width="500" alt="Hasil Akhir">
+
 ## Credentials & Environment
 
 While this repository is public, please note that all forms of credentials, API keys (including `.env`), and environment configurations are **not provided**. Access to the production database and sensitive configuration remains restricted for security reasons.
@@ -37,7 +43,7 @@ Need to chat? Feel free to drop me a line via [Email](mailto:novaardiansyah78@gm
 
 ## Project Status
 
-![stages](https://img.shields.io/badge/stages-development-informational)
+![stages](https://img.shields.io/badge/stages-production-informational)
 ![Laravel](https://img.shields.io/badge/Laravel-12-blue)
 ![PHP](https://img.shields.io/badge/PHP-8.3-blue)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-latest-blue)
