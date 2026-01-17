@@ -7,11 +7,18 @@ use App\Models\CriterionComparison;
 
 class CriteriaMatrixService
 {
+  public const RI_TABLE = [1 => 0, 2 => 0, 3 => 0.58, 4 => 0.9, 5 => 1.12, 6 => 1.24, 7 => 1.32, 8 => 1.41, 9 => 1.46, 10 => 1.49];
+
   protected array $criterias = [];
   protected array $comparisonMatrix = [];
   protected array $columnTotals = [];
   protected array $normalizedMatrix = [];
   protected array $priorities = [];
+  protected array $consistencyMatrix = [];
+  protected array $consistencyMeasures = [];
+  protected float $consistencyIndex = 0;
+  protected float $ratioIndex = 0;
+  protected float $consistencyRatio = 0;
 
   public function __construct()
   {
@@ -29,12 +36,10 @@ class CriteriaMatrixService
       $matrix[$comp->criterion_id_1][$comp->criterion_id_2] = $comp->value;
     }
 
-    // Initialize column totals
     foreach ($criterias as $col) {
       $this->columnTotals[$col->id] = 0;
     }
 
-    // Build comparison matrix
     foreach ($criterias as $row) {
       foreach ($criterias as $col) {
         if ($row->id === $col->id) {
@@ -52,7 +57,6 @@ class CriteriaMatrixService
       }
     }
 
-    // Build normalized matrix and calculate priorities
     foreach ($criterias as $row) {
       $rowSum = 0;
       foreach ($criterias as $col) {
@@ -62,6 +66,23 @@ class CriteriaMatrixService
       }
       $this->priorities[$row->id] = $rowSum / count($criterias);
     }
+
+
+    $n = count($criterias);
+
+    foreach ($criterias as $row) {
+      $weightedSum = 0;
+      foreach ($criterias as $col) {
+        $weightedSum += $this->comparisonMatrix[$row->id][$col->id] * $this->priorities[$col->id];
+        $this->consistencyMatrix[$row->id][$col->id] = $this->comparisonMatrix[$row->id][$col->id] * $this->priorities[$col->id];
+      }
+      $this->consistencyMeasures[$row->id] = $weightedSum / $this->priorities[$row->id];
+    }
+
+    $lambdaMax = array_sum($this->consistencyMeasures) / $n;
+    $this->consistencyIndex = ($lambdaMax - $n) / ($n - 1);
+    $this->ratioIndex = self::RI_TABLE[$n] ?? 1.49;
+    $this->consistencyRatio = $this->consistencyIndex / $this->ratioIndex;
   }
 
   public function getCriterias(): array
@@ -87,6 +108,31 @@ class CriteriaMatrixService
   public function getPriorities(): array
   {
     return $this->priorities;
+  }
+
+  public function getConsistencyMatrix(): array
+  {
+    return $this->consistencyMatrix;
+  }
+
+  public function getConsistencyMeasures(): array
+  {
+    return $this->consistencyMeasures;
+  }
+
+  public function getConsistencyIndex(): float
+  {
+    return $this->consistencyIndex;
+  }
+
+  public function getRatioIndex(): float
+  {
+    return $this->ratioIndex;
+  }
+
+  public function getConsistencyRatio(): float
+  {
+    return $this->consistencyRatio;
   }
 
   public static function formatValue(float $value, int $decimals = 4): string
