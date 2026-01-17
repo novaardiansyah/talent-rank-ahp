@@ -79,7 +79,7 @@ class AdminPanelProvider extends PanelProvider
       ->topbar(false)
       ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
       ->widgets([
-        AccountWidget::class,
+        // AccountWidget::class,
       ])
       ->middleware([
         EncryptCookies::class,
@@ -103,6 +103,7 @@ class AdminPanelProvider extends PanelProvider
             * { -ms-overflow-style: none; scrollbar-width: none; }
           </style>
         ')
-      );;
+      );
+    ;
   }
 }
