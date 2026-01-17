@@ -42,7 +42,7 @@ class CriteriaResource extends Resource
   protected static string|UnitEnum|null $navigationGroup = 'Kriteria';
 
   protected static ?int $navigationSort = 10;
-  
+
   protected static ?string $recordTitleAttribute = 'description';
 
   protected static ?string $pluralModelLabel = 'Kriteria';
@@ -58,10 +58,14 @@ class CriteriaResource extends Resource
             TextInput::make('name')
               ->label('Kode Kriteria')
               ->required()
-              ->maxLength(3)
-              ->numeric()
-              ->prefix('C'),
-    
+              ->maxLength(5)
+              ->prefix('C')
+              ->default(function () {
+                $last = Criteria::orderBy('name', 'desc')->first();
+                if (!$last) return '01';
+                return '0' . (int) preg_replace('/[^0-9]/', '', $last->name) + 1;
+              }),
+
             Textarea::make('description')
               ->label('Nama Kriteria')
               ->required()
@@ -85,7 +89,7 @@ class CriteriaResource extends Resource
               ->columnSpan(2),
           ])
           ->columns(3),
-        
+
         Section::make()
           ->Schema([
             TextEntry::make('created_at')

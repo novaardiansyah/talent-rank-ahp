@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Criterias\Pages;
 
 use App\Filament\Resources\Criterias\CriteriaResource;
+use App\Models\Criteria;
 use Filament\Resources\Pages\CreateRecord;
 
 class CreateCriteria extends CreateRecord

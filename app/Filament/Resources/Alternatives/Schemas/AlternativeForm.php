@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Alternatives\Schemas;
 
+use App\Models\Alternative;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Components\Grid;
@@ -18,9 +19,13 @@ class AlternativeForm
             TextInput::make('name')
               ->label('Kode Alternatif')
               ->required()
-              ->maxLength(3)
-              ->numeric()
-              ->prefix('A'),
+              ->maxLength(5)
+              ->prefix('A')
+              ->default(function () {
+                $last = Alternative::orderBy('name', 'desc')->first();
+                if (!$last) return '01';
+                return '0' . (int) preg_replace('/[^0-9]/', '', $last->name) + 1;
+              }),
 
             Textarea::make('description')
               ->label('Nama Alternatif')
