@@ -4,6 +4,7 @@ namespace App\Providers\Filament;
 
 use App\Filament\AvatarProviders\AvatarPlaceHolder;
 use App\Filament\Pages\Profile;
+use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
 use Filament\Actions\Action;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -68,7 +69,7 @@ class AdminPanelProvider extends PanelProvider
         'Kriteria',
         'Alternatif',
         'Perhitungan Final',
-        'Logs',
+        'Pengaturan',
       ])
       ->pages([
         Dashboard::class,
@@ -94,6 +95,24 @@ class AdminPanelProvider extends PanelProvider
       ])
       ->authMiddleware([
         Authenticate::class,
+      ])
+      ->plugins([
+        FilamentShieldPlugin::make()
+          ->navigationSort(10)
+          ->navigationGroup('Pengaturan')
+          ->navigationLabel('Hak Akses')
+          ->modelLabel('Model')
+          ->pluralModelLabel('Models')
+          ->gridColumns([
+            'default' => 2,
+          ])
+          ->checkboxListColumns([
+            'default' => 1,
+          ])
+          ->resourceCheckboxListColumns([
+            'default' => 2,
+          ])
+          ->sectionColumnSpan(1)
       ])
       ->renderHook(
         PanelsRenderHook::HEAD_END,

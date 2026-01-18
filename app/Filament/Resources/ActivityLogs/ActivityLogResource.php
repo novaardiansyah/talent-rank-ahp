@@ -45,9 +45,9 @@ class ActivityLogResource extends Resource
 
   protected static ?string $recordTitleAttribute = 'description';
 
-  protected static string|UnitEnum|null $navigationGroup = 'Logs';
+  protected static string|UnitEnum|null $navigationGroup = 'Pengaturan';
 
-  protected static ?int $navigationSort = 10;
+  protected static ?int $navigationSort = 100;
 
   public static function form(Schema $schema): Schema
   {
