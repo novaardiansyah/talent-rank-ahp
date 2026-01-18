@@ -31,15 +31,15 @@ You can explore the system on our demo site: [https://talent-rank-ahp.novaardian
 
 **Super Administrator :**
 - Email: `admin@novaardiansyah.id`
-- Password: -
+- Password: `3iDKLKqizxCewC2C`
 
-> Note: Some features may be limited in the demo version. If you encounter any bugs or issues, please feel free to open an issue. **Super Administrator** account is not available in the demo version, you can contact me directly to get the Super Administrator account for specific purposes.
+> Note: Some features may be limited in the demo version. **Super Administrator access is not available in the demo version.** If you encounter any bugs or issues, please feel free to open an issue.
 
-## Credentials & Environment
+### Starter Kit Database
 
-While this repository is public, please note that all forms of credentials, API keys (including `.env`), and environment configurations are **not provided**. Access to the production database and sensitive configuration remains restricted for security reasons.
+For a quick start, you can use the initial database provided in:
 
-If you are interested in using this project for specific purposes or require a demo environment setup guide, please contact me directly.
+[talent-rank-ahp (started-kit).zip](https://github.com/novaardiansyah/talent-rank-ahp/blob/main/public/started-kit/database/talent-rank-ahp%20%28started-kit%29.zip)
 
 ## Project Previews
 
