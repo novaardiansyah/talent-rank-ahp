@@ -4,11 +4,11 @@
  * Project Name: talent-rank-ahp
  * File: UsersTable.php
  * Created Date: Sunday January 18th 2026
- * 
+ *
  * Author: Nova Ardiansyah admin@novaardiansyah.id
  * Website: https://novaardiansyah.id
  * MIT License: https://github.com/novaardiansyah/talent-rank-ahp/blob/main/LICENSE
- * 
+ *
  * Copyright (c) 2026 Nova Ardiansyah, Org
  */
 
@@ -50,6 +50,11 @@ class UsersTable
         TextColumn::make('email')
           ->label('Alamat Email')
           ->searchable()
+          ->toggleable(),
+        TextColumn::make('roles.name')
+          ->label('Hak Akses')
+          ->badge()
+          ->color(fn (string $state): string => self::getRoleColor($state))
           ->toggleable(),
         TextColumn::make('email_verified_at')
           ->label('Verifikasi')
@@ -97,5 +102,16 @@ class UsersTable
           RestoreBulkAction::make(),
         ]),
       ]);
+  }
+
+  public static function getRoleColor(string $role): string
+  {
+    $role = strtolower($role);
+    return match ($role) {
+      'super administrator' => 'primary',
+      'manager' => 'info',
+      'user' => 'warning',
+      default => 'gray',
+    };
   }
 }
