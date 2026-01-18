@@ -5,6 +5,7 @@ namespace App\Filament\Pages;
 use BackedEnum;
 use Filament\Pages\Page;
 use Filament\Support\Icons\Heroicon;
+use Illuminate\Support\Facades\Auth;
 use UnitEnum;
 
 class FinalRangking extends Page
@@ -15,6 +16,11 @@ class FinalRangking extends Page
   protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedPencilSquare;
   protected static string|UnitEnum|null $navigationGroup = 'Perhitungan Final';
   protected static ?string $slug = 'report/final-rangking';
+
+  public static function canAccess(): bool
+  {
+    return Auth::user()?->can('View:FinalRangking') ?? false;
+  }
 
   public function getBreadcrumbs(): array
   {

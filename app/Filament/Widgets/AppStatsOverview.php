@@ -4,11 +4,11 @@
  * Project Name: talent-rank-ahp
  * File: AppStatsOverview.php
  * Created Date: Saturday January 17th 2026
- * 
+ *
  * Author: Nova Ardiansyah admin@novaardiansyah.id
  * Website: https://novaardiansyah.id
  * MIT License: https://github.com/novaardiansyah/talent-rank-ahp/blob/main/LICENSE
- * 
+ *
  * Copyright (c) 2026 Nova Ardiansyah, Org
  */
 
@@ -19,12 +19,18 @@ use App\Models\Criteria;
 use App\Models\User;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
+use Illuminate\Support\Facades\Auth;
 
 class AppStatsOverview extends BaseWidget
 {
   protected static ?int $sort = 1;
 
   protected int|string|array $columnSpan = 2;
+
+  public static function canView(): bool
+  {
+    return Auth::user()?->can('View:AppStatsOverview') ?? false;
+  }
 
   protected function getStats(): array
   {
