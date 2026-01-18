@@ -111,8 +111,8 @@ class AdminPanelProvider extends PanelProvider
           ->navigationSort(10)
           ->navigationGroup('Pengaturan')
           ->navigationLabel('Hak Akses')
-          ->modelLabel('Model')
-          ->pluralModelLabel('Models')
+          ->modelLabel('Hak Akses')
+          ->pluralModelLabel('Hak Akses')
           ->gridColumns([
             'default' => 2,
           ])
