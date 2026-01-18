@@ -6,7 +6,7 @@ Welcome to **Talent Rank**! This project is a decision support system designed t
 
 This system is divided into two primary roles:
 - **Manager:** Responsible for managing criteria, weights, and final evaluations.
-- **Employee:** Participants in the evaluation process.
+- **User:** Participants in the evaluation process.
 
 ## Dazzling Tech Stack
 
@@ -19,23 +19,35 @@ This system is divided into two primary roles:
 ## Demo Version
 You can explore the system on our demo site: [https://talent-rank-ahp.novaardiansyah.id](https://talent-rank-ahp.novaardiansyah.id)
 
-**Credentials:**
-- Email: `demo@novaardiansyah.id`
+### Credentials :
+
+**User :**
+- Email: `user@novaardiansyah.id`
 - Password: `3iDKLKqizxCewC2C`
 
-> Note: Some features may be limited in the demo version. If you encounter any bugs or issues, please feel free to open an issue.
+**Manager :**
+- Email: `manager@novaardiansyah.id`
+- Password: `3iDKLKqizxCewC2C`
 
-## Project Previews
+**Super Administrator :**
+- Email: `admin@novaardiansyah.id`
+- Password: -
 
-<img src="public/images/markdown/image-1.png" width="500" alt="Dashboard">
-<img src="public/images/markdown/image-2.png" width="500" alt="Kriteria">
-<img src="public/images/markdown/image-3.png" width="500" alt="Hasil Akhir">
+> Note: Some features may be limited in the demo version. If you encounter any bugs or issues, please feel free to open an issue. **Super Administrator** account is not available in the demo version, you can contact me directly to get the Super Administrator account for specific purposes.
 
 ## Credentials & Environment
 
 While this repository is public, please note that all forms of credentials, API keys (including `.env`), and environment configurations are **not provided**. Access to the production database and sensitive configuration remains restricted for security reasons.
 
 If you are interested in using this project for specific purposes or require a demo environment setup guide, please contact me directly.
+
+## Project Previews
+
+<img src="public/images/markdown/image-1.png" width="500" alt="Dashboard">
+<img src="public/images/markdown/image-2.png" width="500" alt="Kriteria">
+<img src="public/images/markdown/image-3.png" width="500" alt="Hasil Akhir">
+<img src="public/images/markdown/image-4.png" width="500" alt="Kelola Hak Akses">
+<img src="public/images/markdown/image-5.png" width="500" alt="Daftar Hak Akses">
 
 ## Let's Connect
 
