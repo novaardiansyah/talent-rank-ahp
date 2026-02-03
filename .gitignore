@@ -30,3 +30,5 @@ Thumbs.db
 
 /.agent
 /.antigravity
+deploy/
+setup.sh
