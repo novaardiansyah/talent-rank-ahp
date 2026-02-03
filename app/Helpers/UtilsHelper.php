@@ -4,11 +4,11 @@
  * Project Name: talent-rank-ahp
  * File: UtilsHelper.php
  * Created Date: Wednesday January 7th 2026
- * 
+ *
  * Author: Nova Ardiansyah admin@novaardiansyah.id
  * Website: https://novaardiansyah.id
  * MIT License: https://github.com/novaardiansyah/talent-rank-ahp/blob/main/LICENSE
- * 
+ *
  * Copyright (c) 2026 Nova Ardiansyah, Org
  */
 
@@ -18,7 +18,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Str;
 
-function carbonTranslatedFormat(string $date, string $format = 'd/m/Y H:i', string $locale = null): string
+function carbonTranslatedFormat(string $date, string $format = 'd/m/Y H:i', ?string $locale = null): string
 {
   if ($locale) Carbon::setLocale($locale);
   return Carbon::parse($date)->translatedFormat($format);
@@ -93,7 +93,7 @@ function textLower($text)
 function saveActivityLog(array $data = [], $modelMorp = null): ActivityLog
 {
   $causer = getUser();
-  
+
   $model    = $data['model'] ?? '';
   $event    = $data['event'] ?? '';
   $changes  = [];
@@ -101,10 +101,10 @@ function saveActivityLog(array $data = [], $modelMorp = null): ActivityLog
 
   if ($modelMorp) {
     $changes = collect($modelMorp->getDirty())
-    ->except($modelMorp->getHidden());
+      ->except($modelMorp->getHidden());
 
     if ($event == 'Updated') {
-      $oldValue = $changes->mapWithKeys(fn ($value, $key) => [$key => $modelMorp->getOriginal($key)])->toArray();
+      $oldValue = $changes->mapWithKeys(fn($value, $key) => [$key => $modelMorp->getOriginal($key)])->toArray();
     }
 
     $changes  = $changes->toArray();
